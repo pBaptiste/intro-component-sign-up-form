@@ -1,0 +1,232 @@
+---
+import { Image } from "astro:assets";
+import errorIcon from "../images/icon-error.svg";
+---
+
+<section
+  class="max-w-[327px] xl:max-w-[1110px] flex flex-col xl:flex-row xl:items-center gap-16 xl:gap-[45px]"
+>
+  <div class="text-white xl:max-w-[525px]">
+    <h1
+      class="text-center xl:text-start text-[1.75rem] xl:text-[3.125rem] font-bold leading-[2.25rem] xl:leading-[3.438rem] tracking-[-0.292px] xl:tracking-[-0.521px] mb-4 xl:mb-3"
+    >
+      Learn to code by watching others
+    </h1>
+    <p
+      class="text-center xl:text-start text-base font-medium leading-[1.625rem]"
+    >
+      See how experienced developers solve problems in real-time. Watching
+      scripted tutorials is great, but understanding how developers think is
+      invaluable.
+    </p>
+  </div>
+
+  <div class="max-w-[327px] xl:max-w-[540px]">
+    <p
+      class="bg-accent-2 rounded-[10px] shadow-primary text-white py-[18px] pl-[67px] pr-[66px] text-center text-[.938rem] font-bold leading-[1.625rem] tracking-[0.268px] mb-6"
+    >
+      Try it free 7 days <span class="font-normal"
+        >then $20/mo. thereafter</span>
+    </p>
+
+    <form
+      name="signUp"
+      class="bg-white shadow-primary w-full rounded-[10px] p-6 xl:p-10 flex flex-col gap-4 xl:gap-5"
+      action=""
+    >
+      <div class="relative">
+        <input
+          type="text"
+          name="firstName"
+          id="firstName"
+          placeholder="First Name"
+          class="rounded-[5px] bg-transparent border border-[#DEDEDE] py-[15px] px-[19.41px] xl:px-8 w-full text-sm text-secondary placeholder:text-opacity-75 focus:outline-accent-2 font-semibold leading-[1.625rem] tracking-[0.25px] caret-accent-2"
+        />
+        <small
+          id="firstNameEmpty"
+          class="text-background text-right mt-[6px] text-[0.688rem] italic font-medium hidden"
+          >First Name cannot be empty</small
+        >
+        <Image
+          id="firstNameError"
+          src={errorIcon}
+          alt=""
+          class="absolute top-[30%] -translate-y-[30%] right-[27px] hidden"
+        />
+      </div>
+
+      <div class="relative">
+        <input
+          type="text"
+          name="lastName"
+          id="lastName"
+          placeholder="Last Name"
+          class="rounded-[5px] bg-transparent border border-[#DEDEDE] py-[15px] px-[19.41px] xl:px-8 w-full text-sm text-secondary placeholder:text-opacity-75 focus:outline-accent-2 font-semibold leading-[1.625rem] tracking-[0.25px] caret-accent-2"
+        />
+        <small
+          id="lastNameEmpty"
+          class="text-background text-right mt-[6px] text-[0.688rem] italic font-medium hidden"
+          >Last Name cannot be empty</small
+        >
+        <Image
+          id="lastNameError"
+          src={errorIcon}
+          alt=""
+          class="absolute top-[30%] -translate-y-[30%] right-[27px] hidden"
+        />
+      </div>
+
+      <div class="relative">
+        <input
+          type="text"
+          name="email"
+          id="email"
+          placeholder="Email Address"
+          class="rounded-[5px] bg-transparent border border-[#DEDEDE] py-[15px] px-[19.41px] xl:px-8 w-full text-sm text-secondary placeholder:text-opacity-75 focus:outline-accent-2 font-semibold leading-[1.625rem] tracking-[0.25px] caret-accent-2"
+        />
+        <small
+          id="emailEmpty"
+          class="text-background text-right mt-[6px] text-[0.688rem] italic font-medium hidden"
+          >Email cannot be empty</small
+        >
+        <small
+          id="emailInvalid"
+          class="text-background text-right mt-[6px] text-[0.688rem] italic font-medium hidden"
+          >Looks like this is not an email</small
+        >
+        <Image
+          id="emailError"
+          src={errorIcon}
+          alt=""
+          class="absolute top-[30%] -translate-y-[30%] right-[27px] hidden"
+        />
+      </div>
+
+      <div class="relative">
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Password"
+          class="rounded-[5px] bg-transparent border border-[#DEDEDE] py-[15px] px-[19.41px] xl:px-8 w-full text-sm text-secondary placeholder:text-opacity-75 focus:outline-accent-2 font-semibold leading-[1.625rem] tracking-[0.25px] caret-accent-2"
+        />
+        <small
+          id="passwordEmpty"
+          class="text-background text-right mt-[6px] text-[0.688rem] italic font-medium hidden"
+          >Password cannot be empty</small
+        >
+        <Image
+          id="passwordError"
+          src={errorIcon}
+          alt=""
+          class="absolute top-[30%] -translate-y-[30%] right-[27px] hidden"
+        />
+      </div>
+
+      <div>
+        <button
+          class="w-full bg-accent-1 hover:bg-[#77E2B3] focus:bg-[#77E2B3] focus:outline-none shadow-button text-white text-[.938rem] font-semibold leading-[1.625rem] tracking-[1px] uppercase rounded-[5px] py-[15px] mb-2"
+          type="submit">CLAIM YOUR FREE TRIAL</button
+        >
+        <p
+          class="text-muted text-[0.688rem] font-medium leading-[1.313rem] text-center px-[15px] xl:px-[45px]"
+        >
+          By clicking the button, you are agreeing to our <span
+            class="text-background font-bold"
+          >
+            <a href="#">Terms and Services</a></span>
+        </p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector("form");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const errorMsgs = document.querySelectorAll("small");
+
+      errorMsgs.forEach((err) => {
+        err.style.display = "none";
+      });
+
+      const firstName = document.forms["signUp"]["firstName"];
+      const lastName = document.forms["signUp"]["lastName"];
+      const email = document.forms["signUp"]["email"];
+      const password = document.forms["signUp"]["password"];
+
+      //Hide error messages on input click
+      const hideErrorMsgs = (e : Event ) => {
+        const field = (e.target as HTMLInputElement).id;
+        document.getElementById(`${field}Empty`).style.display = "none";
+        document.getElementById(`${field}Error`).style.display = "none";
+        document.getElementById(`${field}`).style.border = "1px solid #DEDEDE";
+      };
+
+      firstName.addEventListener("click", hideErrorMsgs);
+      firstName.addEventListener("focus", hideErrorMsgs);
+
+      lastName.addEventListener("click", hideErrorMsgs);
+      lastName.addEventListener("focus", hideErrorMsgs);
+
+      email.addEventListener("click", hideErrorMsgs);
+      email.addEventListener("focus", hideErrorMsgs);
+
+      password.addEventListener("click", hideErrorMsgs);
+      password.addEventListener("focus", hideErrorMsgs);
+
+      //Check if fields are empty on submit and show error messages
+      const showErrorMsg = (field : string) => {
+        document.getElementById(`${field}Empty`).style.display = "block";
+        document.getElementById(`${field}Error`).style.display = "block";
+        document.getElementById(`${field}`).style.border = "2px solid #FF7979";
+        document.forms["signUp"][`${field}`].placeholder = " ";
+      };
+
+      if (!firstName.value.trim()) {
+        showErrorMsg("firstName");
+      }
+
+      if (!lastName.value.trim()) {
+        showErrorMsg("lastName");
+      }
+
+      if (!email.value.trim()) {
+        showErrorMsg("email");
+      }
+
+      if (!password.value.trim()) {
+        showErrorMsg("password");
+      }
+
+      //Validate the email given by the user 
+      function validateEmail(email : string) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      }
+
+      if (email.value.trim() && !validateEmail(email.value.trim())) {
+        document.getElementById("emailInvalid").style.display = "block";
+        document.getElementById("emailError").style.display = "block";
+        document.getElementById("email").style.border = "2px solid #FF7979";
+        document.getElementById("email").style.color = "#FF7979";
+        document.forms["signUp"]["email"].placeholder = " ";
+      }
+
+      if (
+        firstName.value.trim() &&
+        lastName.value.trim() &&
+        email.value.trim() &&
+        password.value.trim() &&
+        validateEmail(email.value.trim())
+      ) {
+        alert("Thank You For Signing Up!");
+        window.location.reload()
+      }
+    });
+  });
+</script>
